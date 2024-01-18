@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 50%;
+  margin: auto;
+  padding-bottom: 15px;
+  /* padding-top: 15px; */
+  /* box-shadow: 10px 5px 5px white; */
+  outline-offset: 10px;
+  outline-color: white;
+  outline-style: solid;
+  outline-width: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  min-height: 1000px;
+  background-color: white;
+  border-radius: 50px;
+  animation: outline_move;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.App-header {
+  background-color: #282c34;
+  width: 100%;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  border: 1px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /* margin-top: 30px; */
+  margin-bottom: 0px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  
+}
+
+.App-list {
+  list-style-type: none;
+}
+
+.Add-button {
+  border-radius: 10%;
+  margin-left: 5px;
+}
+.Add-button:hover {
+  color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(95,9,121,1) 36%, rgba(0,212,255,1) 100%);
+  transform: scale(1.1);
+}
+
+.Add-input {
+  border: none;
+}
+
+.Completed-text {
+  text-decoration: line-through;
+}
+
+.edit-list {
+  display: flex;
+}
+
+@keyframes  outline_move {
+  50% {
+    outline-color: white;
+    outline: 1px ;
+  }
+}
+
+body {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(95,9,121,1) 36%, rgba(0,212,255,1) 100%);
+}
