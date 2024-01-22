@@ -10,7 +10,7 @@ function App() {
   const layout = {
     id : String,
     value : String,
-    tick : Number,
+    tick : Boolean,
     counter : Number
   };
   const [todo, setTodo] = useState(localStorage.getItem('data')? JSON.parse(localStorage.getItem('data')): [layout]);
@@ -39,7 +39,7 @@ function App() {
       return y.value !== value;
     })); 
     const new_id = crypto.randomUUID();
-    setTodo(todo => [...todo, {id : new_id, value: value, tick : 0, counter : 0}]);
+    setTodo(todo => [...todo, {id : new_id, value: value, tick : false, counter : 0}]);
     setValue("");
     setTick(!tick);
     console.log(todo);
