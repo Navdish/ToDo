@@ -41,6 +41,7 @@ function App() {
     const new_id = crypto.randomUUID();
     setTodo(todo => [...todo, {id : new_id, value: value, tick : 0, counter : 0}]);
     setValue("");
+    setTick(!tick);
     console.log(todo);
   }
 
