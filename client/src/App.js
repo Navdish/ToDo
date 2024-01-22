@@ -1,5 +1,6 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
   const [tick, setTick] = useState(true);
   const [value, setValue] = useState("");
   const layout = {
+    id : String,
     value : "",
     tick : Number,
     counter : Number
@@ -14,10 +16,10 @@ function App() {
   const [todo, setTodo] = useState([layout]);
   
 
-  function handleAdd(e) {
+  function HandleAdd(e) {
     e.preventDefault();
-    
-    setTodo(todo => [...todo, {value: value, tick : 0, counter : 0}]);
+    const new_id = crypto.randomUUID();
+    setTodo(todo => [...todo, {id : new_id, value: value, tick : 0, counter : 0}]);
     setValue("");
     console.log(todo);
   }
@@ -70,7 +72,7 @@ function App() {
           }
           else {
             setTodo(todo => todo.filter((y)=> {
-              return y.value !== x.value;
+              return y.id !== x.id;
             })); 
           }
           
@@ -79,7 +81,7 @@ function App() {
       </ul>
       <form >
         <input className="Add-input" type="text" value={value} onChange={(e)=> setValue(e.target.value)} placeholder='Enter the new entry'/>
-        <button className="Add-button" type='submit' onClick={(e)=>handleAdd(e)}>+</button>
+        <button className="Add-button" type='submit' onClick={(e)=>HandleAdd(e)}>+</button>
       </form>
 
       
