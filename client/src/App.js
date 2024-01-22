@@ -149,3 +149,9 @@ export default App;
 //   localStorage.setItem('data', JSON.stringify(data));
 // }, [data]);
   
+// {
+//   0 : unchecked,
+//   1 : checked,
+//   2 : editing,
+//   3 : deleted
+// }
