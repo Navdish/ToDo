@@ -77,6 +77,10 @@ function App() {
       <header className="App-header">
        To-do list
       </header>
+      <form className='new-entry'>
+        <input className="Add-input" type="text" value={value} onChange={(e)=> setValue(e.target.value)} placeholder='Enter the new entry'/>
+        <button className="Add-button" type='submit' onClick={(e)=>HandleAdd(e)}>+</button>
+      </form>
       <ul className='App-list'>
         {todo.map((x, key)=> { 
           if(x.counter === 0 ) {
@@ -96,8 +100,8 @@ function App() {
               </li>  
           }
           else if( x.counter === 1) {
-            return <li className='Completed-text' key={key}>
-              <div className='left-items'>
+            return <li  key={key}>
+              <div className='left-items Completed-text'>
                 <input  type='checkbox' checked={x.tick}  onChange={(e) => { HandleTick(x, 0, 0)}} />
                 {x.value} 
               </div>
@@ -139,10 +143,7 @@ function App() {
           })
         }
       </ul>
-      <form >
-        <input className="Add-input" type="text" value={value} onChange={(e)=> setValue(e.target.value)} placeholder='Enter the new entry'/>
-        <button className="Add-button" type='submit' onClick={(e)=>HandleAdd(e)}>+</button>
-      </form>
+      
 
       
       

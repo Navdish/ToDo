@@ -20,9 +20,9 @@
   min-height: 1000px;
   background-color: white;
   border-radius: 50px;
-  animation: outline_move;
+  /* animation: outline_move;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: infinite; */
 }
 
 .App-header {
@@ -47,14 +47,20 @@
   padding-right: 40px;
 }
 
+.new-entry {
+  margin: 10px;
+}
+
 li {
   display: flex;
   justify-content: space-between;
 }
 
 .Add-button {
-  border-radius: 10%;
+  border-radius: 15px;
+  width: 30px;
   margin-left: 5px;
+  padding: 5px;
 }
 .Add-button:hover {
   color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(95,9,121,1) 36%, rgba(0,212,255,1) 100%);
@@ -63,6 +69,7 @@ li {
 
 .Add-input {
   border: none;
+  padding: 5px;
 }
 
 .Completed-text {
