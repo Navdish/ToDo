@@ -1,10 +1,12 @@
+
+
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   /* justify-content: center; */
-  width: 50%;
+  width: 600px;
   margin: auto;
   padding-bottom: 15px;
   /* padding-top: 15px; */
@@ -63,6 +65,11 @@
   display: flex;
 }
 
+.list-input {
+  display: inline;
+  width: 50px;
+}
+
 @keyframes  outline_move {
   50% {
     outline-color: white;
@@ -73,4 +80,30 @@
 body {
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(95,9,121,1) 36%, rgba(0,212,255,1) 100%);
+}
+
+@media screen and (max-width : 600px) {
+  .App {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    width: 240px;
+    margin: auto;
+    padding-bottom: 15px;
+
+    outline-offset: 10px;
+    outline-color: white;
+    outline-style: solid;
+    outline-width: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    min-height: 1000px;
+    background-color: white;
+    border-radius: 50px;
+    animation: outline_move;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+  
 }
