@@ -54,15 +54,19 @@ function App() {
   function HandleEdit(e, x) {
     e.preventDefault();
     if(revalue === "") {
-        x.counter = x.tick;
+        x.counter = Number(x.tick);
         setTick(!tick);
         return;
     }
-    // setTodo(todo => todo.filter((y)=> {
-    //   return (y.value !== revalue);
-    // })); 
+    setTodo(todo => todo.filter((y)=> {
+      return (y.value !== revalue);
+    })); 
+    const new_id = crypto.randomUUID();
+    setTodo(todo => [...todo, {id : new_id, value: revalue, tick : false, counter : 0}]);
+    setValue("");
+    setTick(!tick);
     x.value=revalue;
-    x.counter=x.tick;
+    x.counter=Number(x.tick);
     setRevalue("");
     setTick(!tick);
 
@@ -77,39 +81,51 @@ function App() {
         {todo.map((x, key)=> { 
           if(x.counter === 0 ) {
               return <li key={key}>
-                <input  type='checkbox' checked={x.tick}  onChange={(e) => { HandleTick(x, 1, 1)}} />
-                <div className='list-input'>{x.value} </div> 
+                <div className='left-items'>
+                  <input  type='checkbox' checked={x.tick}  onChange={(e) => { HandleTick(x, 1, 1)}} />
+                  <div className='list-input'>{x.value} </div>
+                </div>
+                <div className='right-items'> 
+                  <button onClick={(e) => { HandleTick(x, x.tick, 2)}}>
+                    Edit
+                  </button>
+                  <button variant="outlined" color="error" onClick={(e) => {HandleTick(x, x.tick, 3)}}>
+                    Delete
+                  </button>
+                </div>
+              </li>  
+          }
+          else if( x.counter === 1) {
+            return <li className='Completed-text' key={key}>
+              <div className='left-items'>
+                <input  type='checkbox' checked={x.tick}  onChange={(e) => { HandleTick(x, 0, 0)}} />
+                {x.value} 
+              </div>
+              <div className='right-items'>
                 <button onClick={(e) => { HandleTick(x, x.tick, 2)}}>
                   Edit
                 </button>
                 <button onClick={(e) => {HandleTick(x, x.tick, 3)}}>
                   Delete
                 </button>
-              </li>  
-          }
-          else if( x.counter === 1) {
-            return <li className='Completed-text' key={key}>
-              <input  type='checkbox' checked={x.tick}  onChange={(e) => { HandleTick(x, 0, 0)}} />
-               {x.value} 
-              <button onClick={(e) => { HandleTick(x, x.tick, 2)}}>
-                Edit
-              </button>
-              <button onClick={(e) => {HandleTick(x, x.tick, 3)}}>
-                Delete
-              </button>
+              </div> 
               </li>
           }
           else if( x.counter === 2) {
             return <li key={key}>
-              <form >
-                <input type='checkbox' checked={x.tick} disabled/>
-                <input className='list-input'  type='text' onChange={(e)=> { setRevalue(e.target.value)}}/>
-                <button type='submit' onClick={(e)=> {HandleEdit(e, x)}}>
-                  Make Edits
-                </button>
-                <button onClick={(e) => {x.counter = 3; setTick(!tick)}} disabled>
-                  Delete
-                </button>
+              <form className='form-st'>
+                <div className='left-items'>
+                  <input type='checkbox' checked={x.tick} disabled/>
+                  <input className='list-input'  type='text' onChange={(e)=> { setRevalue(e.target.value)}}/> 
+                </div>
+                <div className='right-items'>
+                  <button type='submit' onClick={(e)=> {HandleEdit(e, x)}}>
+                    Make Edits
+                  </button>
+                  <button onClick={(e) => {x.counter = 3; setTick(!tick)}} disabled>
+                    Delete
+                  </button>
+                </div>
               </form>
               </li>
               

@@ -42,6 +42,14 @@
 
 .App-list {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding-right: 40px;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
 }
 
 .Add-button {
@@ -65,10 +73,6 @@
   display: flex;
 }
 
-.list-input {
-  display: inline;
-  width: 50px;
-}
 
 @keyframes  outline_move {
   50% {
@@ -80,6 +84,24 @@
 body {
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(95,9,121,1) 36%, rgba(0,212,255,1) 100%);
+}
+
+.left-items {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.right-items {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.form-st {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 @media screen and (max-width : 600px) {
