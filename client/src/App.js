@@ -1,5 +1,10 @@
 import './App.css';
 import React, { useState,useEffect, useId } from 'react';
+import IconButton from '@mui/material/IconButton';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import DoneIcon from '@mui/icons-material/Done';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -79,7 +84,10 @@ function App() {
       </header>
       <form className='new-entry'>
         <input className="Add-input" type="text" value={value} onChange={(e)=> setValue(e.target.value)} placeholder='Enter the new entry'/>
-        <button className="Add-button" type='submit' onClick={(e)=>HandleAdd(e)}>+</button>
+        <IconButton color="primary" aria-label="add to shopping cart" className="Add-button" type='submit' onClick={(e)=>HandleAdd(e)}>
+          <AddShoppingCartIcon />
+        </IconButton>
+        {/* <button className="Add-button" type='submit' onClick={(e)=>HandleAdd(e)}>+</button> */}
       </form>
       <ul className='App-list'>
         {todo.map((x, key)=> { 
@@ -90,12 +98,12 @@ function App() {
                   <div className='list-input'>{x.value} </div>
                 </div>
                 <div className='right-items'> 
-                  <button onClick={(e) => { HandleTick(x, x.tick, 2)}}>
-                    Edit
-                  </button>
-                  <button variant="outlined" color="error" onClick={(e) => {HandleTick(x, x.tick, 3)}}>
-                    Delete
-                  </button>
+                  <IconButton aria-label='edit' onClick={(e) => { HandleTick(x, x.tick, 2)}} >
+                    <EditIcon />
+                  </IconButton >
+                  <IconButton aria-label="delete" onClick={(e) => {HandleTick(x, x.tick, 3)}}>
+                    <DeleteIcon />
+                  </IconButton>
                 </div>
               </li>  
           }
@@ -103,15 +111,15 @@ function App() {
             return <li  key={key}>
               <div className='left-items Completed-text'>
                 <input  type='checkbox' checked={x.tick}  onChange={(e) => { HandleTick(x, 0, 0)}} />
-                {x.value} 
+                <div className='list-input'>{x.value} </div>
               </div>
               <div className='right-items'>
-                <button onClick={(e) => { HandleTick(x, x.tick, 2)}}>
-                  Edit
-                </button>
-                <button onClick={(e) => {HandleTick(x, x.tick, 3)}}>
-                  Delete
-                </button>
+                  <IconButton aria-label='edit' onClick={(e) => { HandleTick(x, x.tick, 2)}} >
+                    <EditIcon />
+                  </IconButton >
+                <IconButton aria-label="delete"onClick={(e) => {HandleTick(x, x.tick, 3)}}>
+                  <DeleteIcon />
+                </IconButton>
               </div> 
               </li>
           }
@@ -123,12 +131,13 @@ function App() {
                   <input className='list-input'  type='text' onChange={(e)=> { setRevalue(e.target.value)}}/> 
                 </div>
                 <div className='right-items'>
-                  <button type='submit' onClick={(e)=> {HandleEdit(e, x)}}>
-                    Make Edits
-                  </button>
-                  <button onClick={(e) => {x.counter = 3; setTick(!tick)}} disabled>
-                    Delete
-                  </button>
+
+                  <IconButton type='submit' onClick={(e)=> {HandleEdit(e, x)}}>
+                    < DoneIcon/>
+                  </IconButton>
+                  <IconButton onClick={(e) => {x.counter = 3; setTick(!tick)}} aria-label="delete" disabled >
+                    <DeleteIcon />
+                  </IconButton>
                 </div>
               </form>
               </li>

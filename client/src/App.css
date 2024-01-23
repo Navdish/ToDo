@@ -4,13 +4,9 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
   width: 600px;
   margin: auto;
   padding-bottom: 15px;
-  /* padding-top: 15px; */
-  /* box-shadow: 10px 5px 5px white; */
   outline-offset: 10px;
   outline-color: white;
   outline-style: solid;
@@ -20,9 +16,6 @@
   min-height: 1000px;
   background-color: white;
   border-radius: 50px;
-  /* animation: outline_move;
-  animation-duration: 3s;
-  animation-iteration-count: infinite; */
 }
 
 .App-header {
@@ -47,6 +40,10 @@
   padding-right: 40px;
 }
 
+.list-input {
+  padding-left: 10px;
+}
+
 .new-entry {
   margin: 10px;
 }
@@ -56,12 +53,12 @@ li {
   justify-content: space-between;
 }
 
-.Add-button {
+/* .Add-button {
   border-radius: 15px;
   width: 30px;
   margin-left: 5px;
   padding: 5px;
-}
+} */
 .Add-button:hover {
   color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(95,9,121,1) 36%, rgba(0,212,255,1) 100%);
   transform: scale(1.1);
@@ -133,6 +130,13 @@ body {
     animation: outline_move;
     animation-duration: 3s;
     animation-iteration-count: infinite;
+  }
+
+  .list-input {
+    width: 40px;
+    display: flex;
+    justify-content: left;
+    padding-left: 5px;
   }
   
 }
