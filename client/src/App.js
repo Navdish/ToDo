@@ -58,6 +58,7 @@ function App() {
 
   function HandleEdit(e, x) {
     e.preventDefault();
+    console.log(revalue);
     if(revalue === "") {
         x.counter = Number(x.tick);
         setTick(!tick);
@@ -66,12 +67,13 @@ function App() {
     setTodo(todo => todo.filter((y)=> {
       return (y.value !== revalue);
     })); 
+    x.counter = 3;
     const new_id = crypto.randomUUID();
     setTodo(todo => [...todo, {id : new_id, value: revalue, tick : false, counter : 0}]);
     setValue("");
-    setTick(!tick);
-    x.value=revalue;
-    x.counter=Number(x.tick);
+    // setTick(!tick);
+    // x.value=revalue;
+    // x.counter=Number(x.tick);
     setRevalue("");
     setTick(!tick);
 
